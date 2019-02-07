@@ -7,7 +7,23 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="MyController as ctrl">
-    {{2+2}}
-    {{ctrl.foo}}
+    <h1>Oh! The Places You'll Go!</h1>
+    <form ng-submit="ctrl.createPlace()">
+      <p>Add A New Place</p>
+      <input type="text" ng-model="ctrl.city" placeholder="city"/>
+      <input type="text" ng-model="ctrl.country" placeholder="country"/>
+      <input type="text" ng-model="ctrl.image" placeholder="image">
+      <input type="checkbox" ng-model="ctrl.visited"/>
+      <input type="submit" value="New Place"/>
+    </form>
+    <ul>
+      <li
+      ng-repeat="place in ctrl.places"
+      ng-class="(places.visited)?'visited': ''">
+      {{place.city}}
+      {{place.country}}
+      {{place.image}}
+      </li>
+    </ul>
   </body>
 </html>

@@ -2,6 +2,10 @@ const app = angular.module('MyApp', []);
 
 app.controller('MyController', ['$http', function ($http) {
   const controller = this;
+
+  // to hide extra fields
+  this.indexOfEditFormToShow = -1;
+  
   this.createPlace = function () {
     $http({
       method: 'POST',
@@ -54,6 +58,42 @@ app.controller('MyController', ['$http', function ($http) {
     }, function(){
       console.log(error);
     });
+  }
+
+  // function to delete Place
+  this.deletePlace = function (place) {
+    $http({
+      method: 'DELETE',
+      url: '/places/' + place._id
+    }).then(
+      function(response) {
+        controller.getPlaces();
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
+  }
+
+  // function to edit Place
+  this.editPlace = function (place) {
+    $http({
+      method: 'PUT',
+      url: '/places/' + place._id,
+      data: {
+        city: this.updatedCity,
+        country: this.updatedCountry,
+        image: this.updatedImage,
+        visited: this.updatedVisited
+      }
+    }).then(
+      function(response) {
+        controller.getPlaces();
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
   }
 
 

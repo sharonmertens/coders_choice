@@ -10,9 +10,11 @@ router.post('/', (req, res) => {
   });
 });
 
-
+// INDEX route
 router.get('/', (req, res) => {
-  res.send('index');
+  Places.find({}, (err, foundPlaces) => {
+    res.json(foundPlaces);
+  });
 });
 
 module.exports = router;

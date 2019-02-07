@@ -5,7 +5,7 @@ app.controller('MyController', ['$http', function ($http) {
 
   // to hide extra fields
   this.indexOfEditFormToShow = -1;
-  
+
   this.createPlace = function () {
     $http({
       method: 'POST',

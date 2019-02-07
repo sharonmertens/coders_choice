@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 // middleware
 app.use(express.json());
+app.use(express.static('public'));
 
 const placesController = require('./controllers/places.js')
 app.use('/places', placesController);

@@ -17,4 +17,11 @@ router.get('/', (req, res) => {
   });
 });
 
+// DELETE route
+router.delete('/:id', (req, res) => {
+  Places.findByIdAndRemove(req.params.id, (err, deletedPlace) => {
+    res.json(deletedPlace);
+  });
+});
+
 module.exports = router;

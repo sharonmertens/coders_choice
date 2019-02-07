@@ -26,6 +26,14 @@
             {{place.image}}
           </span>
         <button ng-click="ctrl.deletePlace(place)">Delete Place</button>
+        <!-- FORM TO EDIT PLACE  -->
+        <form ng-submit="ctrl.editPlace(place)">
+          <input type="text" ng-model="ctrl.updatedCity" placeholder="city"/>
+          <input type="text" ng-model="ctrl.updatedCountry" placeholder="country"/>
+          <input type="text" ng-model="ctrl.updatedImage" placeholder="image">
+          <input type="checkbox" ng-model="ctrl.updatedVisited"/>
+          <input type="submit" value="Update Place"/>
+        </form>
       </li>
     </ul>
   </body>

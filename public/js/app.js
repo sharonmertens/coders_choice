@@ -71,6 +71,27 @@ app.controller('MyController', ['$http', function ($http) {
     );
   }
 
+  // function to edit Place
+  this.editPlace = function (place) {
+    $http({
+      method: 'PUT',
+      url: '/places/' + place._id,
+      data: {
+        city: this.updatedCity,
+        country: this.updatedCountry,
+        image: this.updatedImage,
+        visited: this.updatedVisited
+      }
+    }).then(
+      function(response) {
+        controller.getPlaces();
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  }
+
 
   this.getPlaces()
 }]); // closes controller

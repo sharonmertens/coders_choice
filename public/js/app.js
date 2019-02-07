@@ -2,6 +2,10 @@ const app = angular.module('MyApp', []);
 
 app.controller('MyController', ['$http', function ($http) {
   const controller = this;
+
+  // to hide extra fields
+  this.indexOfEditFormToShow = -1;
+  
   this.createPlace = function () {
     $http({
       method: 'POST',

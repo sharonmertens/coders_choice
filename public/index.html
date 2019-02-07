@@ -7,7 +7,35 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="MyController as ctrl">
-    {{2+2}}
-    {{ctrl.foo}}
+    <h1>Oh! The Places You'll Go!</h1>
+    <form ng-submit="ctrl.createPlace()">
+      <p>Add A New Place</p>
+      <input type="text" ng-model="ctrl.city" placeholder="city"/>
+      <input type="text" ng-model="ctrl.country" placeholder="country"/>
+      <input type="text" ng-model="ctrl.image" placeholder="image">
+      <input type="checkbox" ng-model="ctrl.visited"/>
+      <input type="submit" value="New Place"/>
+    </form>
+    <ul>
+      <li
+        ng-class="(places.visited)?'visited': ''"
+        ng-repeat="place in ctrl.places">
+          <span ng-click="ctrl.togglePlaceVisited(place);">
+            {{place.city}}
+            {{place.country}}
+            {{place.image}}
+          </span>
+        <button ng-click="ctrl.deletePlace(place)">Delete Place</button>
+        <!-- FORM TO EDIT PLACE  -->
+        <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Edit This Place</a>
+        <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editPlace(place)">
+          <input type="text" ng-model="ctrl.updatedCity" placeholder="city"/>
+          <input type="text" ng-model="ctrl.updatedCountry" placeholder="country"/>
+          <input type="text" ng-model="ctrl.updatedImage" placeholder="image">
+          <input type="checkbox" ng-model="ctrl.updatedVisited"/>
+          <input type="submit" value="Update Place"/>
+        </form>
+      </li>
+    </ul>
   </body>
 </html>

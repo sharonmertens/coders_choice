@@ -18,11 +18,13 @@
     </form>
     <ul>
       <li
-      ng-repeat="place in ctrl.places"
-      ng-class="(places.visited)?'visited': ''">
-      {{place.city}}
-      {{place.country}}
-      {{place.image}}
+        ng-class="(places.visited)?'visited': ''"
+        ng-repeat="place in ctrl.places">
+          <span ng-click="ctrl.togglePlaceVisited(place);">
+            {{place.city}}
+            {{place.country}}
+            {{place.image}}
+          </span>
       </li>
     </ul>
   </body>

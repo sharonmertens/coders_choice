@@ -30,5 +30,32 @@ app.controller('MyController', ['$http', function ($http) {
       console.log('error');
     })
   }
+
+  // function to toggle
+  this.togglePlaceVisited = function (place) {
+    let newVisitedValue;
+    if(place.visited === true ) {
+      newVisitedValue = false;
+    } else {
+      newVisitedValue = true;
+    }
+
+    $http({
+      method: 'PUT',
+      url: '/places/' + place._id,
+      data: {
+        city: place.city,
+        country: place.country,
+        image: place.image,
+        visited: newVisitedValue
+      }
+    }).then(function(response){
+      controller.getPlaces();
+    }, function(){
+      console.log(error);
+    });
+  }
+
+
   this.getPlaces()
 }]); // closes controller

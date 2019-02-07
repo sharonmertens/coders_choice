@@ -17,4 +17,18 @@ router.get('/', (req, res) => {
   });
 });
 
+// DELETE route
+router.delete('/:id', (req, res) => {
+  Places.findByIdAndRemove(req.params.id, (err, deletedPlace) => {
+    res.json(deletedPlace);
+  });
+});
+
+// UPDATE route
+router.put('/:id', (req, res) => {
+  Places.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlace)=> {
+    res.json(updatedPlace)
+  })
+})
+
 module.exports = router;

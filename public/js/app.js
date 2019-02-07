@@ -56,6 +56,21 @@ app.controller('MyController', ['$http', function ($http) {
     });
   }
 
+  // function to delete Place
+  this.deletePlace = function (place) {
+    $http({
+      method: 'DELETE',
+      url: '/places/' + place._id
+    }).then(
+      function(response) {
+        controller.getPlaces();
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
+  }
+
 
   this.getPlaces()
 }]); // closes controller

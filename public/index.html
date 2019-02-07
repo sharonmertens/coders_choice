@@ -8,12 +8,12 @@
   </head>
   <body ng-controller="MyController as ctrl">
     <h1>Oh! The Places You'll Go!</h1>
-    <form>
+    <form ng-submit="ctrl.createPlace()">
       <p>Add A New Place</p>
-      <input type="text" placeholder="city"/>
-      <input type="text" placeholder="country"/>
-      <input type="text" placeholder="image">
-      <input type="checkbox"/>
+      <input type="text" ng-model="ctrl.city" placeholder="city"/>
+      <input type="text" ng-model="ctrl.country" placeholder="country"/>
+      <input type="text" ng-model="ctrl.image" placeholder="image">
+      <input type="checkbox" ng-model="ctrl.visited"/>
       <input type="submit" value="New Place"/>
     </form>
   </body>
